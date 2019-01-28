@@ -1,0 +1,31 @@
+import queue
+from collections import defaultdict
+
+e= int(input("Enter number of edges"))
+adjlist=defaultdict(list)
+
+for k in range(e):
+    x=int(input())
+    y=int(input())
+    adjlist[x].append(y)
+    adjlist[y].append(x)
+
+print((adjlist))
+
+
+myQueue= queue.Queue(maxsize=10)
+visited= [False]*7
+print(visited)
+print(adjlist)
+
+myQueue.put(1)
+visited[1]=True
+while myQueue:
+
+    x=myQueue.get()
+    print("node: " + str(x)+ " ")
+    for i in adjlist[x]:
+        if visited[i] is False:
+            myQueue.put(i)
+            visited[i]=True
+

@@ -1,0 +1,27 @@
+from collections import defaultdict
+e= int(input("Enter number of edges: "))
+adjlist=defaultdict(list)
+
+for k in range(e):
+    x=int(input("Enter node A: "))
+    y=int(input("Enter node B: "))
+    adjlist[x].append(y)
+    adjlist[y].append(x)
+
+print((adjlist))
+
+mylist= list()
+mylist.append(0)
+visited=[False]*6
+
+visited[0]=True
+print(visited)
+
+while mylist:
+    x=mylist.pop()
+    print("Node:" + str(x))
+    for i in adjlist[x]:
+        if visited[i] is False:
+            mylist.append(i)
+            visited[i]=True
+
