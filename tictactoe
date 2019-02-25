@@ -1,0 +1,69 @@
+array= []
+array.append([0,0,0])
+array.append([0,0,0])
+array.append([0,0,0])
+
+def checkwin( array , x):
+    if(array[0][0]==array[0][1]==array[0][2]==x):
+        return 1
+    elif(array[1][0]==array[1][1]==array[1][2]==x):
+        return 1
+    elif (array[2][0] == array[2][1] == array[2][2] == x):
+        return 1
+    elif (array[0][0] == array[1][0] == array[2][0] == x):
+        return 1
+    elif (array[0][1] == array[1][1] == array[2][1] == x):
+        return 1
+    elif (array[0][2] == array[1][2] == array[2][2] == x):
+        return 1
+    elif (array[0][0] == array[1][1] == array[2][2] == x):
+        return 1
+    elif (array[0][2] == array[1][1] == array[2][0] == x):
+        return 1
+    else:
+        return 0
+
+
+def display(array):
+    for x in array:
+        for y in x:
+            print(str(y)+" ",end=' ')
+        print()
+
+
+def mark(array, p):
+    print("Player "+str(p))
+    x=int(input("Enter X: "))
+    y=int(input("Enter Y: "))
+
+    if array[x][y]!=0:
+        print("Already marked!")
+        mark(array,p)
+    else:
+        if(p==1):
+            array[x][y]=1
+        else:
+            array[x][y]=2
+
+
+
+
+count=0
+
+while(count<=9):
+    display(array)
+    if(count%2==0):
+        mark(array,1)
+        count=count+1
+    else:
+        mark(array,2)
+        count=count+1
+
+    if(checkwin(array,1)==1):
+        display(array)
+        print("Player 1 won!")
+        count=10
+    elif(checkwin(array,2)==1):
+        display(array)
+        print("Player 2 won!")
+        count=10
